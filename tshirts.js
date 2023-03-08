@@ -1,4 +1,5 @@
 const {expect} = require('chai');
+const { test } = require('./test/tshirtTest');
 
 function size(cms) {
     if (cms < 38) {
@@ -10,7 +11,9 @@ function size(cms) {
     }
 }
 
-expect(size(37)).equals('S');
-expect(size(40)).equals('M');
-expect(size(43)).equals('L');
-console.log('All is well (maybe!)');
+
+module.exports = {
+    size
+}
+
+test();

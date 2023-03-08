@@ -1,13 +1,6 @@
+const { networkAlertStub } = require("./networkStub");
+const { test } = require('./test/alerterTest');
 let alertFailureCount = 0;
-
-function networkAlertStub(celcius) {
-    console.log(`Alert! Temperature is ${celcius} degrees`);
-    // Return 200 for ok
-    // Return 500 for not-ok
-    // stub always succeeds and returns 200
-    return 200;
-}
-
 function alertInCelcius(farenheit) {
     const celcius = (farenheit - 32) * 5 / 9;
     const returnCode = networkAlertStub(celcius);
@@ -20,7 +13,12 @@ function alertInCelcius(farenheit) {
     }
 }
 
+module.exports = {
+    alertFailureCount,
+}
+
+//testing
 alertInCelcius(400.5);
 alertInCelcius(303.6);
-console.log(`${alertFailureCount} alerts failed.`);
-console.log('All is well (maybe!)');
+test();
+
