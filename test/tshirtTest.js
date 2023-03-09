@@ -6,8 +6,9 @@ function test(){
     const { size } = require('../tshirts')
 
     //checking whether it gives size for size less than minumum size and maximum size
-    expect(size(0)).not.equal('S')
-    expect(size(150)).not.equal('L')
+    expect(size(38)).equal('M')
+    expect(size(-1)).equal('Invalid Size');
+    expect(size(300)).equal('Invalid Size');
     console.log("All is well");
 
 }
