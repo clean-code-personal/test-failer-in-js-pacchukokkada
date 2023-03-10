@@ -1,37 +1,30 @@
 const {expect} = require('chai');
-const { test } = require('./test/misalignedTest');
 
 let manual = [];
-let colors = [];
+let colorCombination = [];
 const majorColors = ["White", "Red", "Black", "Yellow", "Violet"];
 const minorColors = ["Blue", "Orange", "Green", "Brown", "Slate"];
 function print_color_map() {
     
     for (let i = 0; i < majorColors.length; i++) {
         for (let j = 0; j < minorColors.length; j++) {
-            console.log(`${i * 5 + j} | ${majorColors[i]} | ${minorColors[j]}`);
-            let st = `${i * 5 + j} | ${majorColors[i]} | ${minorColors[j]}`;
-            manual.push(st);
-            let col = [];
-            col.push(majorColors[i]);
-            col.push(minorColors[j]);
-            colors.push(col); 
-
+            let code =  (i*5+j+1).toString() 
+            let codeWithPadding = code + " ".repeat(3-code.length)+"|"; 
+            majColorWithPadding = majorColors[i] + " ".repeat(11 - (codeWithPadding.length + majorColors[i].length))+ "|";
+            console.log(`${codeWithPadding} ${majColorWithPadding} ${minorColors[j]}`);
+            let st = codeWithPadding+" "+majColorWithPadding+" "+minorColors[j];
+            manual.push(st);   
+            colorCombination.push({'majorColor':majorColors[i],'minorColor':minorColors[j]}); 
         }
     }
     return majorColors.length * minorColors.length;
 }
 
-//result = print_color_map();
-// expect(result).equals(25);
-// console.log('All is well (maybe!)');
-
 module.exports = {
+    print_color_map,
     manual,
-    colors,
+    colorCombination,
     majorColors,
     minorColors
 }
-let size = print_color_map();
-test()
 
