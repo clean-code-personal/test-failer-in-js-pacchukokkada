@@ -1,18 +1,16 @@
 //module to test the alerter  
 
+const { expect } = require('chai');
+const { alertInCelcius, getAlertFailureCount } = require('../alerter');
 
+function test() {      
 
-function test() {
-    const { alertFailureCount } = require('../alerter');
-    const { assert, expect } = require('chai');
-    
-    //checking whether the failed alert count is greater than 0 0r not
-    expect(alertFailureCount).not.equal(0);
-    console.log('All is well');
-    
-}
-module.exports = {
-    test
+    alertInCelcius(400.5);
+    alertInCelcius(300);
+    //checking whether the alertFailureCount is one or not
+    expect(getAlertFailureCount()).equal(1);
+    console.log('All is well');   
 }
 
+test();
 
