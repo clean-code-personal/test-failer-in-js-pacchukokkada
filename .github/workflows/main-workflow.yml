@@ -16,11 +16,11 @@ jobs:
       - name: Install Dependncies
         run:  sudo npm install
       
-      - name: tshirts fail
-        run: bash .github/workflows/expectfail.sh "node tshirts.js"
+      - name: tshirts pass
+        run: "node ./test/tshirtTest.js"
 
-      - name: misaligned fail
-        run: bash .github/workflows/expectfail.sh "node misaligned.js"
+      - name: misaligned pass
+        run: "node ./test/misalignedTest.js"
 
-      - name: alerter fail
-        run: bash .github/workflows/expectfail.sh "node alerter.js"
+      - name: alerter pass
+        run: "node ./test/alerterTest.js"
