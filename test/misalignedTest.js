@@ -1,45 +1,45 @@
 //module to test the misaligned 
+const { manual, majorColors, minorColors, colorCombination, print_color_map } = require('../misaligned');
+const { expect } = require('chai');
+
 
 //function to check the alignment
-function checkAlignment(manual){
+function checkAlignment(){
+    let firstSeparatorLoc = 3;
+    let secondSeparatorLoc = 12;
     for(let i=0;i<manual.length;i++)
-        if(manual[i][3] != '|' || manual[i][12] != '|')
+        if(manual[i][firstSeparatorLoc] != '|' || manual[i][secondSeparatorLoc] != '|')
             return 0;
     return 1;
 }
 
 //function to check the color combination
-function checkColorCombination(colors,majorColors,minorColors)
+function checkColorCombination()
 {
-    let m=0;
-    for(let i=0;i<5;i++)
+    let index=0;
+    for(let i=0;i<majorColors.length;i++)
     {
-        for(let j=0;j<5;j++)
+        for(let j=0;j<minorColors.length;j++)
         {
-            if(colors[m][0] != majorColors[i] || colors[m][1] != minorColors[j])
+            if(colorCombination[index].majorColor != majorColors[i] || colorCombination[index].minorColor != minorColors[j])
                 return 0;
-            m = m+1;
+            index++;
         }
     }
     return 1;
 }
 
 function test(){
-    const { manual,colors, majorColors, minorColors } = require('../misaligned');
-    const { expect } = require('chai');
+    print_color_map();
     //checking whether code starts from 1 or not
     expect(manual[0][0]).equal('1');
-    // //checking whether the color combination is correct or not 
-    expect(colors[0][0]).equal('White');
-    expect(colors[0][1]).equal('Blue');
     // //checking the alignment of the separator
-    expect(checkAlignment(manual)).equal(1);
-    expect(checkColorCombination(colors,majorColors,minorColors)).equal(1);
+    expect(checkAlignment()).equal(1);
+    //checking the color-combination with respect to color code
+    expect(checkColorCombination()).equal(1);
     console.log("All is well");
 }
 
-module.exports = {
-    test
-}
 
 
+test();
