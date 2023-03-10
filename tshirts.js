@@ -1,13 +1,14 @@
-const {expect} = require('chai');
-const { test } = require('./test/tshirtTest');
 
 function size(cms) {
-    if (cms < 38) {
+    if (cms < 38 && cms >=5) {
         return 'S';
-    } else if (cms > 38 && cms < 42) {
+    } else if (cms >= 38 && cms < 42) {
         return 'M';
-    } else {
+    } else if(cms >= 42 && cms<=70) {
         return 'L';
+    }
+    else {
+        return "Invalid Size";
     }
 }
 
@@ -15,5 +16,3 @@ function size(cms) {
 module.exports = {
     size
 }
-
-test();
