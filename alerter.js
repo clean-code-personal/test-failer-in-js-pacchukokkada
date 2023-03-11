@@ -1,9 +1,9 @@
-const { networkAlertStub } = require("./networkStub");
 
 let alertFailureCount = 0;
-function alertInCelcius(farenheit) {
+function alertInCelcius(farenheit,alertNetwork) {
     const celcius = (farenheit - 32) * 5 / 9;
-    const returnCode = networkAlertStub(celcius);
+    //passing the temperature value to network 
+    const returnCode = alertNetwork(celcius);
     if (returnCode != 200) {
         alertFailureCount += 1;
     }
