@@ -30,13 +30,19 @@ function checkColorCombination()
 }
 
 function test(){
-    print_color_map();
-    //checking whether code starts from 1 or not
-    expect(manual[0][0]).equal('1');
-    // //checking the alignment of the separator
-    expect(checkAlignment()).equal(1);
-    //checking the color-combination with respect to color code
-    expect(checkColorCombination()).equal(1);
+    describe('Checking color combination and alignment of separator', () => {
+        print_color_map();
+        it('code should starts from 1', ()=> {
+            expect(manual[0][0]).equal('1');
+        });
+        it('alignment of separator should be correct, checkAlignment() should return 1', () => {
+            expect(checkAlignment()).equal(1);
+        });
+        it('color combination should be correct, checkColorCombination() should return 1', () => {
+            expect(checkColorCombination()).equal(1);
+        });
+    });
+    
     console.log("All is well");
 }
 

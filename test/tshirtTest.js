@@ -3,10 +3,18 @@ const { expect } = require('chai')
 const { size } = require('../tshirts')
 
 function test(){
-    //checking whether it gives size for size less than minumum size and maximum size
-    expect(size(38)).equal('M')
-    expect(size(-1)).equal('Invalid Size');
-    expect(size(300)).equal('Invalid Size');
+
+    describe('Checking whether function gives correct size', ()=> {
+        it("should return 'M' for 38cms", () => {
+            expect(size(38)).equal('M')
+        });
+        it("should return 'Invalid Size for -1cms", () => {
+            expect(size(-1)).equal('Invalid Size');
+        });
+        it("should return ''Invalid Size' for 300cms ", () => {
+            expect(size(300)).equal('Invalid Size');
+        });
+    });
     console.log("All is well");
 
 }

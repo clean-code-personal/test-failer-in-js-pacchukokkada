@@ -16,11 +16,11 @@ jobs:
       - name: Install Dependncies
         run:  sudo npm install
       
-      - name: tshirts pass
-        run: "node ./test/tshirtTest.js"
+      - name: tshirts mocha test
+        run: "npx mocha ./test/tshirtTest.js"
 
-      - name: misaligned pass
-        run: "node ./test/misalignedTest.js"
+      - name: misaligned mocha test
+        run: "npx mocha ./test/misalignedTest.js"
 
-      - name: alerter pass
-        run: "node ./test/alerterTest.js"
+      - name: alerter mocha test
+        run: "npx mocha ./test/alerterTest.js"
